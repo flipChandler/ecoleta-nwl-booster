@@ -16,18 +16,24 @@ const users = [
 
 //listar todos usuários
 app.get('/users', (request, response) => {
-    const search = request.query.search;
+    //http://localhost:3333/users?search=an
+    const search = String(request.query.search);
     
-    // no query do insomnia | name: search | value: an |  http://localhost:3333/users?search=an 
-    console.log(search);// exibe o query param no cmd (an)
+   const filteredUsers = search ? users.filter(user => user.includes(search)) : users;
 
-  return response.json(users);
+  return response.json(filteredUsers); // 
+
+  /*[
+  "Suzana",
+  "Janaina",
+  "Josiani"
+   ] */
 });
 
 
 //listar um usuario
 // request.params == @PathVariable
-// query param -> parametros opcionais dentro da rota
+// query param -> parametros opcionais dentro da rota, filtro, paginação
 app.get('/users/:id', (request, response) => {
     
     const id = Number (request.params.id);
