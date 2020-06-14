@@ -16,15 +16,18 @@ const users = [
 
 //listar todos usuários
 app.get('/users', (request, response) => {
-    console.log('listagem de usuários');
-
-    //response.send('Olá, companheiros!');
+    const search = request.query.search;
+    
+    // no query do insomnia | name: search | value: an |  http://localhost:3333/users?search=an 
+    console.log(search);// exibe o query param no cmd (an)
 
   return response.json(users);
 });
 
 
 //listar um usuario
+// request.params == @PathVariable
+// query param -> parametros opcionais dentro da rota
 app.get('/users/:id', (request, response) => {
     
     const id = Number (request.params.id);
