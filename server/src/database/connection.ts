@@ -6,9 +6,11 @@ const connection = knex({
     connection: {
         host: '127.0.0.1',
         user: 'root',
-        password:'',
+        password:'root',
         database:'ecoleta_booster_db'
     }
 });
 
 export default connection;
+
+
