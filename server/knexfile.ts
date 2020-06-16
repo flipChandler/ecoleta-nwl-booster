@@ -12,6 +12,9 @@ module.exports = {
         migrations: {
             directory: `${__dirname}/src/database/migrations`
         },
+        seeds: {
+            directory: `${__dirname}/src/database/seeds`
+        },
         useNullAsDefault: false, 
     }
      // yarn knex:migrate pra rodar as migrations (script package.json)  
