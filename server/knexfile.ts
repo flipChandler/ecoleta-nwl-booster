@@ -11,6 +11,8 @@ module.exports = {
         },  
         migrations: {
             directory: `${__dirname}/src/database/migrations`
-        } 
-    }   
+        },
+        useNullAsDefault: true, 
+    }
+       
 };

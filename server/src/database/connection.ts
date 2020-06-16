@@ -8,7 +8,8 @@ const connection = knex({
         user: 'root',
         password:'root',
         database:'ecoleta_booster_db'
-    }
+    },
+    useNullAsDefault: true,
 });
 
 export default connection;
