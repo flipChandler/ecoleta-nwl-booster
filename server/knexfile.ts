@@ -12,7 +12,8 @@ module.exports = {
         migrations: {
             directory: `${__dirname}/src/database/migrations`
         },
-        useNullAsDefault: true, 
+        useNullAsDefault: false, 
     }
-       
+     // yarn knex:migrate pra rodar as migrations (script package.json)  
+     // npm run knex:migrate pra rodar as migrations (script package.json)  
 };

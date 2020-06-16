@@ -9,7 +9,7 @@ const connection = knex({
         password:'root',
         database:'ecoleta_booster_db'
     },
-    useNullAsDefault: true,
+    useNullAsDefault: false,
 });
 
 export default connection;
