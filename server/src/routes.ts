@@ -26,7 +26,27 @@ routes.get('/items', async (request, response) => {
     //desestruturação do body em JS
     const { name, email, whatsapp, latitude, longitude, city, uf, items } = request.body;
     // image not null
-    await knex('points').insert({ image: 'image-fake', name, email, whatsapp, latitude, longitude, city, uf });
+    const insertedIds = await knex('points').insert({ 
+        image: 'image-fake', 
+        name, // nome da variavel é o mesmo do campo da tabela
+        email, 
+        whatsapp, 
+        latitude, 
+        longitude, 
+        city, 
+        uf 
+    });
+
+    const point_id = insertedIds[0]; // esse point_id é o msm que retorna na linha 45
+
+    const pointItems = items.map((item_id: number) => {
+        return {
+            item_id,
+            point_id,
+        };
+    });
+
+    await knex('points_items').insert(pointItems);
 
     return response.json({ success: true });
  });
