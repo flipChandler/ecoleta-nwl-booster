@@ -1,0 +1,24 @@
+criar ponto de coleta ->(post) localhost:3333/points
+
+JSON
+
+{
+	"name":"Mercado Donzela", 
+	"email":"contato@donzela.com.br", 
+	"whatsapp": "22222222222", 
+	"latitude": -12.0005502, 
+	"longitude": -19.89666666, 
+	"city": "Barueri", 
+	"uf": "SP", 
+	"items": [1, 2, 6	]
+}
+
+
+
+----------------------------------------------------------------
+
+listar items  -> (get) localhost:3333/items
+
+
+----------------------------------------------------------------
+

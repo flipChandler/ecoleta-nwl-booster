@@ -25,8 +25,12 @@ routes.get('/items', async (request, response) => {
  routes.post('/points', async(request, response) => {
     //desestruturação do body em JS
     const { name, email, whatsapp, latitude, longitude, city, uf, items } = request.body;
+    
+    // trx -> caso a 2ª query falhar, não execute a primeira
+    const trx = await knex.transaction();
+    
     // image not null
-    const insertedIds = await knex('points').insert({ 
+    const insertedIds = await trx('points').insert({ 
         image: 'image-fake', 
         name, // nome da variavel é o mesmo do campo da tabela
         email, 
@@ -46,9 +50,10 @@ routes.get('/items', async (request, response) => {
         };
     });
 
-    await knex('points_items').insert(pointItems);
+    await trx('points_items').insert(pointItems);
 
     return response.json({ success: true });
+
  });
 
 
