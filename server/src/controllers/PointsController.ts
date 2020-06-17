@@ -12,7 +12,17 @@ class PointsController{
             return response.status(400).json({ messagem: 'Ponto de coleta não encontrado!' });
         }
 
-        return response.json(point);
+        /**
+         * SELECT * FROM items
+         *    JOIN points_items ON items.id = points_items.item_id
+         *      WHERE points_items.point_id = { id }
+         */
+
+         const items = await knex('items')
+            .join('points_items', 'items.id', '=', 'points_items.item_id')
+            .where('points_items.point_id', id);
+
+        return response.json({ point, items });
     }
 
 
