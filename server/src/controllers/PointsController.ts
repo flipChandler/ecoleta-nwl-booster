@@ -5,6 +5,14 @@ class PointsController{
 
     async show(request: Request, response: Response){
         const { id } = request.params; // desestruturação de const  id  = request.params.id;
+
+        const point = await knex('points').where('id', id).first(); // first, a variavel deixa de ser um array
+
+        if (!point) {
+            return response.status(400).json({ messagem: 'Ponto de coleta não encontrado!' });
+        }
+
+        return response.json(point);
     }
 
 
