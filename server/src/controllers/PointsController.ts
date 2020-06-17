@@ -58,7 +58,7 @@ class PointsController{
     
     // parametros para a 1ª query, vindos do request.body
     const point = {
-        image: 'image-fake', 
+        image: 'https://images.unsplash.com/photo-1549031677-c596911f3d27?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=400&q=60', 
         name, // nome da variavel é o mesmo do campo da tabela (request.body)
         email, 
         whatsapp, 
