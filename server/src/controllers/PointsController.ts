@@ -20,7 +20,8 @@ class PointsController{
 
          const items = await knex('items')
             .join('points_items', 'items.id', '=', 'points_items.item_id')
-            .where('points_items.point_id', id);
+            .where('points_items.point_id', id) // id recuperado do request.params
+            .select('items.title'); // desse join, só o titulo
 
         return response.json({ point, items });
     }
